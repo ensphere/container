@@ -11,8 +11,14 @@ composer require ensphere/container:1.*
 
 add the service provider
 
-```cli
+```php
 Ensphere\Container\Providers\ServiceProvider::class
+```
+
+register the middleware in the web group
+
+```php
+Ensphere\Container\Http\Middleware\Validate::class
 ```
 
 ### Define a binding area
@@ -73,6 +79,8 @@ $container->bind( 'dashboard-top-bar', [
 ```php
 $topBar = $container->render( 'dashboard-top-bar' );
 ```
+
+
 
 
 
