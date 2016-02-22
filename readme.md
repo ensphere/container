@@ -4,7 +4,7 @@
 Maps classes to certain areas to inject processes and views.
 
 
-The MIT License (MIT)
+### The MIT License (MIT)
 
 Copyright (c) 2016 ensphere
 
