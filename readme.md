@@ -12,7 +12,7 @@ composer require ensphere/container:1.*
 add the service provider
 
 ```cli
-'Ensphere\Container\Providers\ServiceProvider::class'
+Ensphere\Container\Providers\ServiceProvider::class
 ```
 
 ### Define a binding area
