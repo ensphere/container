@@ -27,7 +27,6 @@ $container->register( 'dashboard-top-bar' )
 create a content stub.
 
 ```php
-<?php
 use Ensphere\Container\Content;
 use Illuminate\Http\Request;
 
@@ -72,7 +71,6 @@ $container->bind( 'dashboard-top-bar', [
 
 ### Render the views
 ```php
-<?php
 $topBar = $container->render( 'dashboard-top-bar' );
 ```
 
