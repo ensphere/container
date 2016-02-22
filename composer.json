@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Ensphere\\Container": "src/"
+            "Ensphere\\Container\\": "src/"
         }
     },
     "minimum-stability": "dev"
