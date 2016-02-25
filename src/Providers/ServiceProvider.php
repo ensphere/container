@@ -1,9 +1,9 @@
 <?php namespace Ensphere\Container\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 use Ensphere\Container\Container;
 
-class ServiceProvider extends ServiceProvider {
+class ServiceProvider extends IlluminateServiceProvider {
 
 	/**
 	 * Bootstrap any application services.
