@@ -17,6 +17,12 @@ class Container {
 	protected $blocks = [];
 
 	/**
+	 * [$holdings description]
+	 * @var array
+	 */
+	protected $holdings = [];
+
+	/**
 	 * [__construct description]
 	 * @param [type] $app [description]
 	 */
@@ -35,6 +41,10 @@ class Container {
 		$block = new Block;
 		$block->setName( $name );
 		$this->blocks[] = $block;
+		if( isset( $this->holdings[$name] ) ) {
+			$block->register( $this->holdings[$name] );
+			unset( $this->holdings[$name] );
+		}
 		return $block;
 	}
 
@@ -66,6 +76,11 @@ class Container {
 		}
 		if( $block = $this->retrieve( $name ) ) {
 			$block->register( $classes );
+		} else {
+			if( ! isset( $this->holdings[$name] ) ) {
+				$this->holdings[$name] = [];
+			}
+			$this->holdings[$name] = array_merge( $this->holdings[$name], $classes );
 		}
 	}
 
