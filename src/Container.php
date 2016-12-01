@@ -52,11 +52,13 @@ class Container {
 	 * [render description]
 	 * @return [type] [description]
 	 */
-	public function render( $name )
+	public function render( $name, $data = [] )
 	{
 		$viewString = '';
 		if( $block = $this->retrieve( $name ) ) {
 			foreach( $block->getSections() as $section ) {
+				$section->setRegistrar( $name );
+				$section->bindData( $data );
 				$viewString .= $section->renderView();
 			}
 		}
@@ -138,7 +140,7 @@ class Container {
 	 * @param  [type] $name [description]
 	 * @return [type]       [description]
 	 */
-	protected function retrieve( $name )
+	public function retrieve( $name )
 	{
 		foreach( $this->blocks as $block ) {
 			if( $block->getName() === $name ) {

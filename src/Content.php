@@ -17,6 +17,21 @@ class Content {
 	protected $data = [];
 
 	/**
+	 * [$registrar description]
+	 * @var string
+	 */
+	protected $registrar = '';
+
+	/**
+	 * [setRegistrar description]
+	 * @param [type] $name [description]
+	 */
+	final public function setRegistrar( $name )
+	{
+		$this->registrar = $name;
+	}
+
+	/**
 	 * [renderView description]
 	 * @return [type] [description]
 	 */
@@ -34,6 +49,16 @@ class Content {
 	public function setData( array $data )
 	{
 		$this->data = $data;
+	}
+
+	/**
+	 * [bindData description]
+	 * @param  array  $data [description]
+	 * @return [type]       [description]
+	 */
+	public function bindData( array $data )
+	{
+		$this->data = array_merge( $this->data, $data );
 	}
 
 	/**
