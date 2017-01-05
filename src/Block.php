@@ -75,9 +75,10 @@ class Block {
 	 * @param  Request $request [description]
 	 * @return [type]           [description]
 	 */
-	public function process( Request $request )
+	public function process( Request $request, $data = [] )
 	{
 		foreach( $this->sections as $section ) {
+			$section->setData( $data );
 			$section->process( $request );
 		}
 	}

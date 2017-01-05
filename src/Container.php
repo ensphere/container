@@ -101,7 +101,7 @@ class Container {
 				}
 			}
 		}
-		return $this->errorsToArray( $validators );
+		return $this->errorsToArray( array_filter( $validators ) );
 	}
 
 	/**
