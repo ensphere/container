@@ -1,30 +1,20 @@
-<?php namespace Ensphere\Container;
+<?php
+
+namespace Ensphere\Container;
 
 use Illuminate\Http\Request;
 
 class Container {
 
-    /**
-     * [$app description]
-     * @var [type]
-     */
     protected $app;
 
-    /**
-     * [$blocks description]
-     * @var array
-     */
     protected $blocks = [];
 
-    /**
-     * [$holdings description]
-     * @var array
-     */
     protected $holdings = [];
 
     /**
-     * [__construct description]
-     * @param [type] $app [description]
+     * Container constructor.
+     * @param $app
      */
     public function __construct( $app )
     {
@@ -32,9 +22,8 @@ class Container {
     }
 
     /**
-     * Register a new container block
-     * @param  [type] $name [description]
-     * @return [type]       [description]
+     * @param $name
+     * @return Block
      */
     public function register( $name )
     {
@@ -49,8 +38,9 @@ class Container {
     }
 
     /**
-     * [render description]
-     * @return [type] [description]
+     * @param $name
+     * @param array $data
+     * @return string
      */
     public function render( $name, $data = [] )
     {
@@ -66,10 +56,8 @@ class Container {
     }
 
     /**
-     * [bind description]
-     * @param  [type] $name    [description]
-     * @param  [type] $classes [description]
-     * @return [type]          [description]
+     * @param $name
+     * @param $classes
      */
     public function bind( $name, $classes )
     {
@@ -87,9 +75,8 @@ class Container {
     }
 
     /**
-     * [validate description]
-     * @param  [type] $routeName [description]
-     * @return [type]            [description]
+     * @param Request $request
+     * @return array
      */
     public function validate( Request $request )
     {
@@ -105,9 +92,8 @@ class Container {
     }
 
     /**
-     * [errorsToArray description]
-     * @param  array  $validators [description]
-     * @return [type]             [description]
+     * @param array $validators
+     * @return array
      */
     public function errorsToArray( array $validators )
     {
@@ -121,24 +107,25 @@ class Container {
     }
 
     /**
-     * [process description]
-     * @param  Request $request [description]
-     * @param  array   $data    [description]
-     * @return [type]           [description]
+     * @param $name
+     * @param Request $request
+     * @param array $data
      */
-    public function process( Request $request, $data = [] )
+    public function process( $name, Request $request, $data = [] )
     {
         foreach( $this->blocks as $block ) {
             if( $request->input( $block->getName() ) ) {
+                foreach( $block->getSections() as $section ) {
+                    $section->setRegistrar( $name );
+                }
                 $block->process( $request, $data );
             }
         }
     }
 
     /**
-     * [retrieve description]
-     * @param  [type] $name [description]
-     * @return [type]       [description]
+     * @param $name
+     * @return bool|mixed
      */
     public function retrieve( $name )
     {
