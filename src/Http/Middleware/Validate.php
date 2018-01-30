@@ -1,4 +1,6 @@
-<?php namespace Ensphere\Container\Http\Middleware;
+<?php
+
+namespace Ensphere\Container\Http\Middleware;
 
 use Closure;
 use Illuminate\Foundation\Application;
@@ -7,21 +9,20 @@ use Illuminate\Routing\Route;
 class Validate
 {
 
-	/**
-	 * [__construct description]
-	 * @param Application $app [description]
-	 */
+    /**
+     * Validate constructor.
+     * @param Application $app
+     */
 	public function __construct( Application $app )
 	{
 		$this->app = $app;
 	}
 
     /**
-     * [handle description]
-     * @param  [type]  $request [description]
-     * @param  Closure $next    [description]
-     * @param  [type]  $guard   [description]
-     * @return [type]           [description]
+     * @param $request
+     * @param Closure $next
+     * @param null $guard
+     * @return mixed
      */
     public function handle( $request, Closure $next, $guard = null )
     {

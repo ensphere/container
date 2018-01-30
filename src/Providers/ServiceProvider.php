@@ -1,9 +1,12 @@
-<?php namespace Ensphere\Container\Providers;
+<?php
+
+namespace Ensphere\Container\Providers;
 
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 use Ensphere\Container\Container;
 
-class ServiceProvider extends IlluminateServiceProvider {
+class ServiceProvider extends IlluminateServiceProvider
+{
 
 	/**
 	 * Bootstrap any application services.
@@ -15,10 +18,9 @@ class ServiceProvider extends IlluminateServiceProvider {
 
 	}
 
-	/**
-	 * [register description]
-	 * @return [type] [description]
-	 */
+    /**
+     * @return void
+     */
 	public function register()
 	{
 		$contracts = [];

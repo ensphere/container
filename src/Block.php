@@ -1,24 +1,24 @@
-<?php namespace Ensphere\Container;
+<?php
+
+namespace Ensphere\Container;
 
 use Illuminate\Http\Request;
 
-class Block {
+class Block
+{
 
     /**
-     * [$name description]
-     * @var [type]
+     * @var
      */
     protected $name;
 
     /**
-     * [$registered description]
      * @var array
      */
     protected $sections = [];
 
     /**
-     * [setName description]
-     * @param [type] $name [description]
+     * @param $name
      */
     public function setName( $name )
     {
@@ -26,8 +26,7 @@ class Block {
     }
 
     /**
-     * [getName description]
-     * @return [type] [description]
+     * @return mixed
      */
     public function getName()
     {
@@ -35,9 +34,7 @@ class Block {
     }
 
     /**
-     * [register description]
-     * @param  [type] $callback [description]
-     * @return [type]           [description]
+     * @param array $classes
      */
     public function register( array $classes )
     {
@@ -47,8 +44,7 @@ class Block {
     }
 
     /**
-     * [getSections description]
-     * @return [type] [description]
+     * @return array
      */
     public function getSections()
     {
@@ -56,9 +52,9 @@ class Block {
     }
 
     /**
-     * [validate description]
-     * @param  Request $request [description]
-     * @return [type]           [description]
+     * @param Request $request
+     * @param array $data
+     * @return array
      */
     public function validate( Request $request, $data = [] )
     {
@@ -70,9 +66,8 @@ class Block {
     }
 
     /**
-     * [process description]
-     * @param  Request $request [description]
-     * @return [type]           [description]
+     * @param Request $request
+     * @param array $data
      */
     public function process( Request $request, $data = [] )
     {

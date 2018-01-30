@@ -1,84 +1,84 @@
-<?php namespace Ensphere\Container;
+<?php
+
+namespace Ensphere\Container;
 
 use Illuminate\Http\Request;
 
-class Content {
+class Content
+{
 
-	/**
-	 * [$view description]
-	 * @var string
-	 */
-	protected $view = '';
+    /**
+     * @var string
+     */
+    protected $view = '';
 
-	/**
-	 * [$data description]
-	 * @var array
-	 */
-	protected $data = [];
+    /**
+     * @var array
+     */
+    protected $data = [];
 
-	/**
-	 * [$registrar description]
-	 * @var string
-	 */
-	protected $registrar = '';
+    /**
+     * @var string
+     */
+    protected $registrar = '';
 
-	/**
-	 * [setRegistrar description]
-	 * @param [type] $name [description]
-	 */
-	final public function setRegistrar( $name )
-	{
-		$this->registrar = $name;
-	}
+    /**
+     * @param $name
+     */
+    final public function setRegistrar( $name )
+    {
+        $this->registrar = $name;
+    }
 
-	/**
-	 * [renderView description]
-	 * @return [type] [description]
-	 */
-	public function renderView()
-	{
-		if( $this->view ) {
-			return view( $this->view, $this->data )->render();
-		}
-	}
+    /**
+     * @return string
+     */
+    public function renderView()
+    {
+        if( $this->view ) {
+            return view( $this->view, $this->data )->render();
+        }
+    }
 
-	/**
-	 * [setData description]
-	 * @param array $data [description]
-	 */
-	public function setData( array $data )
-	{
-		$this->data = $data;
-	}
+    /**
+     * @param array $data
+     */
+    public function setData( array $data )
+    {
+        $this->data = $data;
+    }
 
-	/**
-	 * [bindData description]
-	 * @param  array  $data [description]
-	 * @return [type]       [description]
-	 */
-	public function bindData( array $data )
-	{
-		$this->data = array_merge( $this->data, $data );
-	}
+    /**
+     * @param array $data
+     */
+    public function bindData( array $data )
+    {
+        $this->data = array_merge( $this->data, $data );
+    }
 
-	/**
-	 * [validate description]
-	 * @param  Request $request [description]
-	 * @return [type]           [description]
-	 */
-	public function validate( Request $request  )
-	{
-		return true;
-	}
+    /**
+     * @param Request $request
+     * @return bool
+     */
+    public function validate( Request $request  )
+    {
+        return true;
+    }
 
-	/**
-	 * [process description]
-	 * @param  Request $request [description]
-	 * @return [type]           [description]
-	 */
-	public function process( Request $request )
-	{
+    /**
+     * @return bool
+     */
+    public function display()
+    {
+        return true;
+    }
 
-	}
+    /**
+     * @param Request $request
+     */
+    public function process( Request $request )
+    {
+
+    }
 
 }

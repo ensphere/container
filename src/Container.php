@@ -4,12 +4,22 @@ namespace Ensphere\Container;
 
 use Illuminate\Http\Request;
 
-class Container {
+class Container
+{
 
+    /**
+     * @var
+     */
     protected $app;
 
+    /**
+     * @var array
+     */
     protected $blocks = [];
 
+    /**
+     * @var array
+     */
     protected $holdings = [];
 
     /**
@@ -49,7 +59,9 @@ class Container {
             foreach( $block->getSections() as $section ) {
                 $section->setRegistrar( $name );
                 $section->bindData( $data );
-                $viewString .= $section->renderView();
+                if( $section->display() ) {
+                    $viewString .= $section->renderView();
+                }
             }
         }
         return $viewString;

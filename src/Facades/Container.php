@@ -1,4 +1,6 @@
-<?php namespace Ensphere\Container\Facades;
+<?php
+
+namespace Ensphere\Container\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -6,8 +8,7 @@ class Container extends Facade
 {
 
     /**
-     * [getFacadeAccessor description]
-     * @return [type] [description]
+     * @return string
      */
     protected static function getFacadeAccessor()
     {
