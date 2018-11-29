@@ -32,6 +32,7 @@ class Content
 
     /**
      * @return string
+     * @throws \Throwable
      */
     public function renderView()
     {
